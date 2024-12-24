@@ -25,7 +25,7 @@ export const Hero = () => {
             <img
               src="/lovable-uploads/c83c0486-e426-4594-ab18-ed992fa26643.png"
               alt="AIAutomate Logo"
-              className="h-16 mx-auto mb-8"
+              className="h-32 md:h-40 mx-auto mb-8" // Aumentado de h-16 a h-32/h-40
             />
           </motion.div>
           
