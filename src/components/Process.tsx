@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Search, Cpu, Zap, ArrowRight, Settings, ChartBar } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const steps = [
   {
@@ -40,9 +41,11 @@ export const Process = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Proceso de Implementación
-          </h2>
+          <Link to="/how-it-works" className="inline-block hover:opacity-80 transition-opacity">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              Proceso de Implementación
+            </h2>
+          </Link>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Un enfoque estructurado y eficiente para transformar tu empresa con IA
           </p>

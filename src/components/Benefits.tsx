@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Brain, Cpu, BarChart3, Shield, Zap, Clock } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const benefits = [
   {
@@ -45,9 +46,11 @@ export const Benefits = () => {
           transition={{ duration: 0.6 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
-            Beneficios Transformadores
-          </h2>
+          <Link to="/benefits" className="inline-block hover:opacity-80 transition-opacity">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+              Beneficios Transformadores
+            </h2>
+          </Link>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto">
             Descubre cómo nuestra tecnología de IA puede revolucionar tu empresa y llevarla al siguiente nivel
           </p>
