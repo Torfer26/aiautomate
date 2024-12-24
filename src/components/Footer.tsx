@@ -7,7 +7,7 @@ export const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-2">
             <img
-              src="/lovable-uploads/f40ccbac-2dd6-41ea-a9fe-ab9591eafab5.png"
+              src="/lovable-uploads/c83c0486-e426-4594-ab18-ed992fa26643.png"
               alt="AIAutomate Logo"
               className="h-8 mb-4"
             />
