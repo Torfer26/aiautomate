@@ -16,6 +16,19 @@ export const Hero = () => {
           transition={{ duration: 0.6 }}
           className="text-center max-w-4xl mx-auto"
         >
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="mb-8"
+          >
+            <img
+              src="/lovable-uploads/c83c0486-e426-4594-ab18-ed992fa26643.png"
+              alt="AIAutomate Logo"
+              className="h-16 mx-auto mb-8"
+            />
+          </motion.div>
+          
           <motion.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
