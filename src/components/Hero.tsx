@@ -43,7 +43,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-xl md:text-2xl text-gray-300 mb-8"
+            className="text-xl md:text-2xl text-gray-300 mb-12"
           >
             Automatización inteligente para empresas del futuro
           </motion.p>
@@ -52,11 +52,11 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
-            className="flex flex-col md:flex-row gap-4 justify-center items-center"
+            className="flex flex-col md:flex-row gap-6 justify-center items-center"
           >
             <Button
               size="lg"
-              className="bg-ai-accent hover:bg-ai-accent/90 text-white rounded-full px-8 py-6 text-lg transition-all duration-300 hover:scale-105"
+              className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
             >
               Agenda una demostración
             </Button>
@@ -64,7 +64,7 @@ export const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-white border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg"
+                className="text-white border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg min-w-[250px]"
               >
                 Beneficios Transformadores
               </Button>
@@ -73,7 +73,7 @@ export const Hero = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="text-white border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg"
+                className="text-white border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg min-w-[250px]"
               >
                 Proceso de Implementación
               </Button>
