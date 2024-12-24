@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
+import { Link } from "react-router-dom";
 
 export const Hero = () => {
   return (
@@ -25,7 +26,7 @@ export const Hero = () => {
             <img
               src="/lovable-uploads/c83c0486-e426-4594-ab18-ed992fa26643.png"
               alt="AIAutomate Logo"
-              className="h-64 md:h-80 mx-auto mb-8" // Aumentado de h-32/h-40 a h-64/h-80
+              className="h-64 md:h-80 mx-auto mb-8"
             />
           </motion.div>
           
@@ -51,6 +52,7 @@ export const Hero = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.6 }}
+            className="flex flex-col md:flex-row gap-4 justify-center items-center"
           >
             <Button
               size="lg"
@@ -58,6 +60,24 @@ export const Hero = () => {
             >
               Agenda una demostración
             </Button>
+            <Link to="/benefits">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-white border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg"
+              >
+                Beneficios Transformadores
+              </Button>
+            </Link>
+            <Link to="/how-it-works">
+              <Button
+                variant="outline"
+                size="lg"
+                className="text-white border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg"
+              >
+                Proceso de Implementación
+              </Button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
