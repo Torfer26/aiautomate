@@ -11,18 +11,50 @@ export const Contact = () => {
     email: "",
     message: "",
   });
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
-    // Here you would typically send the email using your backend service
-    // For now, we'll just show a success message
-    toast({
-      title: "Mensaje enviado",
-      description: "Nos pondremos en contacto contigo pronto.",
-    });
-    
-    setFormData({ name: "", email: "", message: "" });
+    setIsLoading(true);
+
+    try {
+      const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${process.env.SENDGRID_API_KEY}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          personalizations: [{
+            to: [{ email: 'contact@aiautomate.es' }]
+          }],
+          from: { email: formData.email },
+          subject: `Nuevo mensaje de ${formData.name}`,
+          content: [{
+            type: 'text/plain',
+            value: `Nombre: ${formData.name}\nEmail: ${formData.email}\nMensaje: ${formData.message}`
+          }]
+        })
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Mensaje enviado",
+          description: "Nos pondremos en contacto contigo pronto.",
+        });
+        setFormData({ name: "", email: "", message: "" });
+      } else {
+        throw new Error('Error al enviar el mensaje');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -89,8 +121,9 @@ export const Contact = () => {
           <Button
             type="submit"
             className="w-full bg-ai-accent hover:bg-ai-accent/90 text-white"
+            disabled={isLoading}
           >
-            Enviar mensaje
+            {isLoading ? "Enviando..." : "Enviar mensaje"}
           </Button>
         </motion.form>
       </div>
