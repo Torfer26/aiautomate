@@ -62,18 +62,16 @@ export const Hero = () => {
             </Button>
             <Link to="/benefits">
               <Button
-                variant="outline"
                 size="lg"
-                className="text-white border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg min-w-[250px]"
+                className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
               >
                 Beneficios Transformadores
               </Button>
             </Link>
             <Link to="/how-it-works">
               <Button
-                variant="outline"
                 size="lg"
-                className="text-white border-white/20 hover:bg-white/10 rounded-full px-8 py-6 text-lg min-w-[250px]"
+                className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
               >
                 Proceso de Implementación
               </Button>
