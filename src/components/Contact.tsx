@@ -19,47 +19,21 @@ export const Contact = () => {
     setIsLoading(true);
 
     try {
-      // Obtener la API key de Resend de la tabla secrets
-      const { data: secretData, error: secretError } = await supabase
-        .from('secrets')
-        .select('*')
-        .eq('name', 'RESEND_API_KEY')
-        .maybeSingle();
-
-      if (secretError) {
-        console.error('Error al obtener la API key:', secretError);
-        throw new Error('Error al obtener la API key');
-      }
-
-      if (!secretData?.value) {
-        console.error('No se encontró la API key en la base de datos');
-        throw new Error('No se encontró la API key de Resend');
-      }
-
-      const response = await fetch('https://api.resend.com/emails', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${secretData.value}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          from: 'AIAutomate <onboarding@resend.dev>',
-          to: ['contact@aiautomate.es'],
-          subject: `Nuevo mensaje de ${formData.name}`,
-          html: `
-            <h2>Nuevo mensaje de contacto</h2>
-            <p><strong>Nombre:</strong> ${formData.name}</p>
-            <p><strong>Email:</strong> ${formData.email}</p>
-            <p><strong>Mensaje:</strong></p>
-            <p>${formData.message}</p>
-          `,
-        })
-      });
+      const response = await fetch(
+        "https://vabijlshixuatvddovle.supabase.co/functions/v1/send-contact-email",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}`,
+          },
+          body: JSON.stringify(formData),
+        }
+      );
 
       if (!response.ok) {
         const errorData = await response.json();
-        console.error('Error response:', errorData);
-        throw new Error(errorData.message || 'Error al enviar el mensaje');
+        throw new Error(errorData.error || "Error al enviar el mensaje");
       }
 
       toast({
@@ -68,7 +42,7 @@ export const Contact = () => {
       });
       setFormData({ name: "", email: "", message: "" });
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
       toast({
         title: "Error",
         description: "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.",
