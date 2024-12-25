@@ -3,8 +3,9 @@ import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
-import { toast } from "./ui/use-toast";
+import { toast } from "@/hooks/use-toast";
 import { useSupabaseClient } from "@supabase/auth-helpers-react";
+import { createClient } from "@supabase/supabase-js";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,7 +14,9 @@ export const Contact = () => {
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const supabase = useSupabaseClient();
+  const supabaseUrl = "https://txeyvnhraorruszptskw.supabase.co";
+  const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4ZXl2bmhyYW9ycnVzenB0c2t3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjU0NzAsImV4cCI6MjAyNTQwMTQ3MH0.qgRs6Ef6o1xpeFzCQ_eGGc_E5Ym0RHFvJQvwLcNjJQY";
+  const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +31,12 @@ export const Contact = () => {
         .single();
 
       if (secretError) {
+        console.error('Error al obtener la API key:', secretError);
         throw new Error('Error al obtener la API key');
+      }
+
+      if (!secretData?.value) {
+        throw new Error('No se encontró la API key de Resend');
       }
 
       const response = await fetch('https://api.resend.com/emails', {
