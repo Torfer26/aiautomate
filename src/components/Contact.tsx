@@ -19,7 +19,6 @@ export const Contact = () => {
     setIsLoading(true);
 
     try {
-      // Obtener la API key de Resend desde Supabase
       const { data: secretData, error: secretError } = await supabase
         .from('secrets')
         .select('value')
@@ -31,7 +30,7 @@ export const Contact = () => {
         throw new Error('Error al obtener la API key');
       }
 
-      if (!secretData?.value) {
+      if (!secretData) {
         throw new Error('No se encontró la API key de Resend');
       }
 
