@@ -19,13 +19,14 @@ export const Contact = () => {
     setIsLoading(true);
 
     try {
+      const { data: { publicUrl } } = supabase.storage.from('edge-functions').getPublicUrl('send-contact-email');
+      
       const response = await fetch(
-        "https://vabijlshixuatvddovle.supabase.co/functions/v1/send-contact-email",
+        `${publicUrl}/send-contact-email`,
         {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Authorization: `Bearer ${process.env.SUPABASE_ANON_KEY}`,
           },
           body: JSON.stringify(formData),
         }
