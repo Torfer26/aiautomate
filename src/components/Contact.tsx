@@ -4,6 +4,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { toast } from "./ui/use-toast";
+import { useQuery } from "@tanstack/react-query";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -21,7 +22,7 @@ export const Contact = () => {
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${import.meta.env.VITE_RESEND_API_KEY}`,
+          'Authorization': `Bearer ${import.meta.env.RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -32,15 +33,17 @@ export const Contact = () => {
         })
       });
 
-      if (response.ok) {
-        toast({
-          title: "Mensaje enviado",
-          description: "Nos pondremos en contacto contigo pronto.",
-        });
-        setFormData({ name: "", email: "", message: "" });
-      } else {
-        throw new Error('Error al enviar el mensaje');
+      if (!response.ok) {
+        const errorData = await response.json();
+        console.error('Error response:', errorData);
+        throw new Error(errorData.message || 'Error al enviar el mensaje');
       }
+
+      toast({
+        title: "Mensaje enviado",
+        description: "Nos pondremos en contacto contigo pronto.",
+      });
+      setFormData({ name: "", email: "", message: "" });
     } catch (error) {
       console.error('Error:', error);
       toast({
