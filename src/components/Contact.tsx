@@ -4,7 +4,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { toast } from "./ui/use-toast";
-import { useQuery } from "@tanstack/react-query";
+import { useSupabaseClient } from "@supabase/auth-helpers-react";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -13,16 +13,28 @@ export const Contact = () => {
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
+  const supabase = useSupabaseClient();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
 
     try {
+      // Obtener la API key de Resend desde Supabase
+      const { data: secretData, error: secretError } = await supabase
+        .from('secrets')
+        .select('value')
+        .eq('name', 'RESEND_API_KEY')
+        .single();
+
+      if (secretError) {
+        throw new Error('Error al obtener la API key');
+      }
+
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${import.meta.env.RESEND_API_KEY}`,
+          'Authorization': `Bearer ${secretData.value}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
