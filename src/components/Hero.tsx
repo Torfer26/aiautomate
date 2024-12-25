@@ -70,7 +70,7 @@ export const Hero = () => {
                   <DialogTitle>Agenda tu demostración</DialogTitle>
                 </DialogHeader>
                 <InlineWidget
-                  url="https://calendly.com/your-calendly-url"
+                  url="https://calendly.com/ai-automate-mail"
                   styles={{
                     height: '600px',
                     width: '100%'
