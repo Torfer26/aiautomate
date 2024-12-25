@@ -18,22 +18,17 @@ export const Contact = () => {
     setIsLoading(true);
 
     try {
-      const response = await fetch('https://api.sendgrid.com/v3/mail/send', {
+      const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.SENDGRID_API_KEY}`,
+          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          personalizations: [{
-            to: [{ email: 'contact@aiautomate.es' }]
-          }],
-          from: { email: formData.email },
+          from: 'AIAutomate <onboarding@resend.dev>',
+          to: ['contact@aiautomate.es'],
           subject: `Nuevo mensaje de ${formData.name}`,
-          content: [{
-            type: 'text/plain',
-            value: `Nombre: ${formData.name}\nEmail: ${formData.email}\nMensaje: ${formData.message}`
-          }]
+          text: `Nombre: ${formData.name}\nEmail: ${formData.email}\nMensaje: ${formData.message}`,
         })
       });
 
