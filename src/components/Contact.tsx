@@ -4,8 +4,7 @@ import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { toast } from "@/hooks/use-toast";
-import { useSupabaseClient } from "@supabase/auth-helpers-react";
-import { createClient } from "@supabase/supabase-js";
+import { supabase } from "@/integrations/supabase/client";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,9 +13,6 @@ export const Contact = () => {
     message: "",
   });
   const [isLoading, setIsLoading] = useState(false);
-  const supabaseUrl = "https://txeyvnhraorruszptskw.supabase.co";
-  const supabaseAnonKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InR4ZXl2bmhyYW9ycnVzenB0c2t3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDk4MjU0NzAsImV4cCI6MjAyNTQwMTQ3MH0.qgRs6Ef6o1xpeFzCQ_eGGc_E5Ym0RHFvJQvwLcNjJQY";
-  const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -28,7 +24,7 @@ export const Contact = () => {
         .from('secrets')
         .select('value')
         .eq('name', 'RESEND_API_KEY')
-        .single();
+        .maybeSingle();
 
       if (secretError) {
         console.error('Error al obtener la API key:', secretError);
