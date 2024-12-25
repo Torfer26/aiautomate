@@ -19,22 +19,12 @@ export const Contact = () => {
     setIsLoading(true);
 
     try {
-      const { data: { publicUrl } } = supabase.storage.from('edge-functions').getPublicUrl('send-contact-email');
-      
-      const response = await fetch(
-        `${publicUrl}/send-contact-email`,
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        }
-      );
+      const response = await supabase.functions.invoke('send-contact-email', {
+        body: formData
+      });
 
-      if (!response.ok) {
-        const errorData = await response.json();
-        throw new Error(errorData.error || "Error al enviar el mensaje");
+      if (response.error) {
+        throw new Error(response.error.message || "Error al enviar el mensaje");
       }
 
       toast({
