@@ -20,7 +20,8 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    const { name, email, message }: ContactRequest = await req.json();
+    const formData: ContactRequest = await req.json();
+    console.log("Received form data:", formData);
 
     const res = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -30,36 +31,36 @@ const handler = async (req: Request): Promise<Response> => {
       },
       body: JSON.stringify({
         from: "AIAutomate <onboarding@resend.dev>",
-        to: ["contact@aiautomate.es"],
-        subject: `Nuevo mensaje de ${name}`,
+        to: ["ai.automate.mail@gmail.com"], // Dirección verificada
+        reply_to: formData.email,
+        subject: `Nuevo mensaje de contacto de ${formData.name}`,
         html: `
           <h2>Nuevo mensaje de contacto</h2>
-          <p><strong>Nombre:</strong> ${name}</p>
-          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Nombre:</strong> ${formData.name}</p>
+          <p><strong>Email:</strong> ${formData.email}</p>
           <p><strong>Mensaje:</strong></p>
-          <p>${message}</p>
+          <p>${formData.message}</p>
         `,
       }),
     });
 
+    const data = await res.json();
+    console.log("Resend API response:", data);
+
     if (!res.ok) {
-      const error = await res.text();
-      return new Response(JSON.stringify({ error }), {
-        status: 400,
-        headers: { ...corsHeaders, "Content-Type": "application/json" },
-      });
+      throw new Error(data.error || "Error al enviar el email");
     }
 
-    const data = await res.json();
     return new Response(JSON.stringify(data), {
       status: 200,
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
+    console.error("Error in send-contact-email function:", error);
     return new Response(
-      JSON.stringify({ error: "Error al enviar el mensaje" }),
+      JSON.stringify({ error: error.message }),
       {
-        status: 500,
+        status: 400,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       }
     );
