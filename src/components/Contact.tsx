@@ -21,7 +21,7 @@ export const Contact = () => {
       const response = await fetch('https://api.resend.com/emails', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+          'Authorization': `Bearer ${import.meta.env.VITE_RESEND_API_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -42,6 +42,7 @@ export const Contact = () => {
         throw new Error('Error al enviar el mensaje');
       }
     } catch (error) {
+      console.error('Error:', error);
       toast({
         title: "Error",
         description: "Hubo un problema al enviar el mensaje. Por favor, inténtalo de nuevo.",
