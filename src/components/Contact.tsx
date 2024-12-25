@@ -19,18 +19,19 @@ export const Contact = () => {
     setIsLoading(true);
 
     try {
+      // Obtener la API key de Resend de la tabla secrets
       const { data: secretData, error: secretError } = await supabase
         .from('secrets')
         .select('value')
         .eq('name', 'RESEND_API_KEY')
-        .maybeSingle();
+        .single();
 
       if (secretError) {
         console.error('Error al obtener la API key:', secretError);
         throw new Error('Error al obtener la API key');
       }
 
-      if (!secretData) {
+      if (!secretData?.value) {
         throw new Error('No se encontró la API key de Resend');
       }
 
@@ -44,7 +45,13 @@ export const Contact = () => {
           from: 'AIAutomate <onboarding@resend.dev>',
           to: ['contact@aiautomate.es'],
           subject: `Nuevo mensaje de ${formData.name}`,
-          text: `Nombre: ${formData.name}\nEmail: ${formData.email}\nMensaje: ${formData.message}`,
+          html: `
+            <h2>Nuevo mensaje de contacto</h2>
+            <p><strong>Nombre:</strong> ${formData.name}</p>
+            <p><strong>Email:</strong> ${formData.email}</p>
+            <p><strong>Mensaje:</strong></p>
+            <p>${formData.message}</p>
+          `,
         })
       });
 
