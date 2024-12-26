@@ -1,4 +1,5 @@
 import { Github, Linkedin, Twitter } from "lucide-react";
+import { Link } from "react-router-dom";
 
 export const Footer = () => {
   return (
@@ -21,28 +22,28 @@ export const Footer = () => {
             <h3 className="font-semibold text-gray-900 mb-4">Enlaces rápidos</h3>
             <ul className="space-y-2">
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/"
                   className="text-gray-600 hover:text-ai-accent transition-colors"
                 >
                   Inicio
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/benefits"
                   className="text-gray-600 hover:text-ai-accent transition-colors"
                 >
                   Servicios
-                </a>
+                </Link>
               </li>
               <li>
-                <a
-                  href="#"
+                <Link
+                  to="/how-it-works"
                   className="text-gray-600 hover:text-ai-accent transition-colors"
                 >
                   Contacto
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -73,8 +74,19 @@ export const Footer = () => {
           </div>
         </div>
         
-        <div className="border-t border-gray-200 mt-12 pt-8 text-center">
-          <p className="text-gray-600 text-sm">
+        <div className="border-t border-gray-200 mt-12 pt-8">
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-gray-600">
+            <Link to="/aviso-legal" className="hover:text-ai-accent transition-colors">
+              Aviso Legal
+            </Link>
+            <Link to="/politica-privacidad" className="hover:text-ai-accent transition-colors">
+              Política de Privacidad
+            </Link>
+            <Link to="/politica-cookies" className="hover:text-ai-accent transition-colors">
+              Política de Cookies
+            </Link>
+          </div>
+          <p className="text-gray-600 text-sm text-center mt-4">
             © {new Date().getFullYear()} AIAutomate. Todos los derechos reservados.
           </p>
         </div>
