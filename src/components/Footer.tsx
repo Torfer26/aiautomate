@@ -13,9 +13,12 @@ export const Footer = () => {
               alt="AIAutomate Logo"
               className="h-12 mb-4"
             />
-            <p className="text-gray-300 max-w-sm">
+            <p className="text-gray-300 max-w-sm mb-2">
               Transformando empresas con soluciones de IA inteligentes y
               automatización avanzada.
+            </p>
+            <p className="text-ai-purple font-semibold">
+              Automate today, inspire tomorrow
             </p>
           </div>
           
