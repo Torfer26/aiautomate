@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
 import { Link } from "react-router-dom";
@@ -26,7 +27,7 @@ export const Hero = () => {
             className="mb-8"
           >
             <img
-              src="/lovable-uploads/c83c0486-e426-4594-ab18-ed992fa26643.png"
+              src="/lovable-uploads/53eb47cd-4f2f-483c-9ddb-bbe66188d2e0.png"
               alt="AIAutomate Logo"
               className="h-64 md:h-80 mx-auto mb-8"
             />
