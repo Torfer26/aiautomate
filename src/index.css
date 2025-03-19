@@ -1,3 +1,4 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -97,5 +98,15 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  .gradient-purple {
+    @apply bg-gradient-to-r from-ai-purple to-ai-purple-light;
+  }
+  
+  .text-gradient-purple {
+    @apply bg-gradient-to-r from-ai-purple via-ai-purple-dark to-ai-purple-light bg-clip-text text-transparent;
   }
 }

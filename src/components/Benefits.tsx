@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Brain, Cpu, BarChart3, Shield, Zap, Clock } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -47,7 +48,7 @@ export const Benefits = () => {
           className="text-center mb-16"
         >
           <Link to="/benefits" className="inline-block hover:opacity-80 transition-opacity">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-purple">
               Beneficios Transformadores
             </h2>
           </Link>
@@ -64,9 +65,9 @@ export const Benefits = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors duration-300 border border-white/10"
+              className="p-6 rounded-2xl bg-white/5 hover:bg-white/10 transition-colors duration-300 border border-ai-purple/20"
             >
-              <div className="w-16 h-16 mb-6 bg-gradient-to-br from-blue-500 to-purple-500 rounded-xl flex items-center justify-center">
+              <div className="w-16 h-16 mb-6 bg-gradient-to-br from-ai-purple to-ai-purple-light rounded-xl flex items-center justify-center">
                 <benefit.icon className="w-8 h-8 text-white" />
               </div>
               <h3 className="text-2xl font-semibold mb-4 text-white">

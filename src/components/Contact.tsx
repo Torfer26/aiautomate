@@ -1,3 +1,4 @@
+
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { Button } from "./ui/button";
@@ -54,7 +55,7 @@ export const Contact = () => {
           transition={{ duration: 0.6 }}
           className="max-w-2xl mx-auto text-center mb-12"
         >
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold text-ai-dark mb-4">
             Contáctanos
           </h2>
           <p className="text-gray-600">
@@ -79,7 +80,7 @@ export const Contact = () => {
                 setFormData({ ...formData, name: e.target.value })
               }
               required
-              className="w-full"
+              className="w-full focus:border-ai-purple focus:ring-ai-purple"
             />
           </div>
           <div>
@@ -91,7 +92,7 @@ export const Contact = () => {
                 setFormData({ ...formData, email: e.target.value })
               }
               required
-              className="w-full"
+              className="w-full focus:border-ai-purple focus:ring-ai-purple"
             />
           </div>
           <div>
@@ -102,12 +103,12 @@ export const Contact = () => {
                 setFormData({ ...formData, message: e.target.value })
               }
               required
-              className="w-full min-h-[150px]"
+              className="w-full min-h-[150px] focus:border-ai-purple focus:ring-ai-purple"
             />
           </div>
           <Button
             type="submit"
-            className="w-full bg-ai-accent hover:bg-ai-accent/90 text-white"
+            className="w-full bg-ai-purple hover:bg-ai-purple-dark text-white"
             disabled={isLoading}
           >
             {isLoading ? "Enviando..." : "Enviar mensaje"}

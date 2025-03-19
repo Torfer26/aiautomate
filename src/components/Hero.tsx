@@ -10,7 +10,7 @@ export const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-ai-dark text-white py-20">
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-ai-dark/90" />
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-ai-accent/20 via-transparent to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-ai-purple/30 via-transparent to-transparent" />
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
@@ -61,7 +61,7 @@ export const Hero = () => {
               <DialogTrigger asChild>
                 <Button
                   size="lg"
-                  className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
+                  className="bg-ai-purple hover:bg-ai-purple-dark text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
                 >
                   Agenda una demostración
                 </Button>
@@ -82,7 +82,7 @@ export const Hero = () => {
             <Link to="/benefits">
               <Button
                 size="lg"
-                className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
+                className="bg-ai-purple hover:bg-ai-purple-dark text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
               >
                 Beneficios Transformadores
               </Button>
@@ -90,7 +90,7 @@ export const Hero = () => {
             <Link to="/how-it-works">
               <Button
                 size="lg"
-                className="bg-[#0EA5E9] hover:bg-[#0EA5E9]/90 text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
+                className="bg-ai-purple hover:bg-ai-purple-dark text-white rounded-full px-8 py-6 text-lg min-w-[250px]"
               >
                 Proceso de Implementación
               </Button>

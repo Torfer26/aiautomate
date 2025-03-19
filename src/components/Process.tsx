@@ -1,3 +1,4 @@
+
 import { motion } from "framer-motion";
 import { Search, Cpu, Zap, ArrowRight, Settings, ChartBar } from "lucide-react";
 import { Link } from "react-router-dom";
@@ -42,7 +43,7 @@ export const Process = () => {
           className="text-center mb-16"
         >
           <Link to="/how-it-works" className="inline-block hover:opacity-80 transition-opacity">
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gradient-purple">
               Proceso de Implementación
             </h2>
           </Link>
@@ -61,7 +62,7 @@ export const Process = () => {
               transition={{ duration: 0.6, delay: index * 0.2 }}
               className="relative flex items-center mb-12 last:mb-0"
             >
-              <div className="w-20 h-20 flex-shrink-0 bg-gradient-to-br from-blue-500 to-purple-500 rounded-2xl flex items-center justify-center">
+              <div className="w-20 h-20 flex-shrink-0 bg-gradient-to-br from-ai-purple to-ai-purple-light rounded-2xl flex items-center justify-center">
                 <step.icon className="w-10 h-10 text-white" />
               </div>
               
@@ -76,7 +77,7 @@ export const Process = () => {
 
               {index < steps.length - 1 && (
                 <div className="absolute -bottom-8 left-10 transform">
-                  <ArrowRight className="w-6 h-6 text-purple-500" />
+                  <ArrowRight className="w-6 h-6 text-ai-purple" />
                 </div>
               )}
             </motion.div>

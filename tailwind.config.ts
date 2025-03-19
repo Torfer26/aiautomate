@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -53,10 +54,15 @@ export default {
           foreground: "hsl(var(--card-foreground))",
         },
         ai: {
-          dark: "#1A1F2C",
+          dark: "#1E1936", // Updated to match logo dark purple
           light: "#F8FAFC",
-          accent: "#0EA5E9",
+          accent: "#9B87F5", // Updated to match logo purple
           muted: "#94A3B8",
+          purple: {
+            light: "#D6BCFA",
+            DEFAULT: "#9B87F5", // Main purple from logo
+            dark: "#7E69AB", // Darker purple
+          }
         },
       },
       borderRadius: {
